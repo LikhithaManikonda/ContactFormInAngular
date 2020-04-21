@@ -1,0 +1,26 @@
+<html>
+   <head>
+   </head>
+   <body>
+      <form>
+        <form #contactForm="ngForm"  id="contact-form" method="post">
+            <h4>Name:</h4>
+            <input type="text" required #name="ngModel" [class.is-invalid]="name.invalid && name.touched"
+            class="form-control"  name=userName [(ngModel)]=UserInfo.name 
+            textstyle="height:35px;" placeholder="Enter name here…" style="width:100%;" /><br/>
+           <!--<small class="text-danger" [class.d-none]="name.valid || name.touched" >Name is requried </small>--> 
+
+            <h4>Phone:</h4>
+            <input type="phone" #phone="ngModel" pattern= "^\d{10}$" [class.is-invalid]="phone.invalid && phone.touched"
+            class="form-control" name=phoneNumber [(ngModel)]=UserInfo.phone style="height:35px;" placeholder="Enter phone number" style="width:100%;"/><br/>
+            <h4>Email:</h4>
+            <input type="email" class="form-control" name=email [(ngModel)]="UserInfo.email" style="height:35px;"  placeholder="Enter email here…" style="width:100%;"/><br/>
+            <h4>How can we help you?</h4>
+            <textarea id="description-input" class="form-control"  name=description [(ngModel)]="UserInfo.description" rows="3" placeholder="Enter your message…"  style="width:100%;"></textarea><br/>
+            <button type="button" name="click" (click)=submitToService() class="btn btn-lg" style="margin-top:20px;">Submit</button>
+          </form>
+      </form>
+      <div *ngFor="let resp of response">{{resp}}</div>
+       
+   </body>
+</html>
